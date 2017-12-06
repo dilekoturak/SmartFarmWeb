@@ -1,43 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">Smart Farm</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
-      <i class="fa fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-        </li>
-        <li class="nav-item">
-        <a href="login" class="nav-link js-scroll-trigger">Login</a>
-      </li>
-      </ul>
+<nav class="navbar navbar-default navbar-static-top m-b-0">
+  <div class="navbar-header">
+    <div class="nav navbar-top navbar-left pull-left">
+      <a style="text-decoration: none; font-size: 30px; padding-left: 25px; padding-top: 8px; color: white;" [routerLink]="['/']">Smart Farm</a>
     </div>
+    <ul class="nav navbar-top-links navbar-right pull-right">
+      <li>
+        <a class="waves-effect waves-light" [routerLink]="['/']">
+          <a>Home</a>
+          <i class="icon-home"></i>
+          <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+        </a>
+      </li>
+      <li> <a class="waves-effect waves-light" [routerLink]="['/signup']">
+        <a>Sign Up </a>
+        <i class="icon-plus"></i>
+        <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+      </a>
+      </li>
+      <!-- /.dropdown -->
+      <li> <a class="waves-effect waves-light" [routerLink]="['/login']">
+        <a>Login </a>
+        <i class="icon-login"></i>
+        <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+      </a>
+      </li>
+
+      <!--
+      <a *ngIf="!isUserLoggedIn" class="btn-outline" [routerLink]="['/login']">Login</a>
+      <a *ngIf="!isUserLoggedIn" class="btn-outline" [routerLink]="['/signup']">SignUp</a>
+      <a *ngIf="isUserLoggedIn" class="btn-outline" [routerLink]="['/dashboard/' + userID]">Dashboard</a>
+      <a *ngIf="isUserLoggedIn" class="btn-outline" [routerLink]="['/login']">Logout</a>
+      -->
+
+    </ul>
   </div>
 </nav>
-<header class="masthead">
-  <div id="stars"></div>
-  <div id="stars2"></div>
-  <div id="stars3"></div>
-  <div class="container">
-    <div class="intro-text">
-      <div class="intro-lead-in">Welcome To Our Studio!</div>
-      <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
-    </div>
-  </div>
-</header>

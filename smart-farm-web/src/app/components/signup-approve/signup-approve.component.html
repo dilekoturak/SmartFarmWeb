@@ -1,0 +1,11 @@
+<div class="col-form-label-lg" style="padding: 20px">
+  <h2>Check your mail to reach Approve Code</h2>
+  <form name="form" (ngSubmit)="f.form.valid && signUp()" #f="ngForm" novalidate>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !approve_code.valid }">
+      <label for="approve_code">Approve Code</label>
+      <input type="text" class="form-control" name="approve_code" [(ngModel)]="model.approve_code" #approve_code="ngModel" required />
+      <div>{{countDown | async}}</div>
+      <div *ngIf="f.submitted && !approve_code.valid" class="help-block">Approve code is required</div>
+    </div>
+  </form>
+</div>

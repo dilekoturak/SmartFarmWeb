@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('smart-farm-web App', () => {
+describe('zopsio App', () => {
   let page: AppPage;
 
   beforeEach(() => {

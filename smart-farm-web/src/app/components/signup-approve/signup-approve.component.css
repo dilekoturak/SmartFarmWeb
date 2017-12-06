@@ -1,0 +1,15 @@
+:host {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-group {
+  min-width: 300px;
+}
+
+.btn {
+  text-decoration: none;
+}
+
