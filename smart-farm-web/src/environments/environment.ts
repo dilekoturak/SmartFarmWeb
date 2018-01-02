@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDLbC1zGwwORYSeXNpaszglqL-zw4byRcM",
+    authDomain: "smartgreenhouse-f919a.firebaseapp.com",
+    databaseURL: "https://smartgreenhouse-f919a.firebaseio.com",
+    projectId: "smartgreenhouse-f919a",
+    storageBucket: "smartgreenhouse-f919a.appspot.com",
+    messagingSenderId: "563079342427"
+  }
 };

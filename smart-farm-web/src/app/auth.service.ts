@@ -1,37 +1,66 @@
-import * as firebase from 'firebase/app';
-import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
-import { AngularFireModule} from "angularfire2";
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {AngularFireAuth} from 'angularfire2/auth';
 
 @Injectable()
-export class AuthService{
-  constructor(private router: Router, public fire: AngularFireModule){}
+export class AuthService {
 
-  signIn(email: string, password: string){
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(
-        response => {
-          this.router.navigate(['home']);
-          this.getCurrentUserToken();
+  authState: any = null;
 
-        },
-        error => console.log(error)
-      );
+  constructor(private afAuth: AngularFireAuth, private router: Router) {
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth
+    });
   }
-  logout(){
-    firebase.auth().signOut();
-    localStorage.removeItem('isLoggedIn');
+
+  get isUserAnonymousLoggedIn(): boolean {
+    return (this.authState !== null) ? this.authState.isAnonymous : false
   }
-  getCurrentUserToken(){
-    firebase.auth().currentUser.getToken()
-      .then(
-        (token: string) => {
-          localStorage.setItem('isLoggedIn', token);
-        }
-      )
-    localStorage.getItem('isLoggedIn');
+
+  get currentUserId(): string {
+    return (this.authState !== null) ? this.authState.uid : ''
   }
-  isAuthenticated(){
-    return (localStorage.getItem('isLoggedIn')) ? true : false;
+
+  get currentUserName(): string {
+    return this.authState['email']
+  }
+
+  get currentUser(): any {
+    return (this.authState !== null) ? this.authState : null;
+  }
+
+  get isUserEmailLoggedIn(): boolean {
+    if ((this.authState !== null) && (!this.isUserAnonymousLoggedIn)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  signUpWithEmail(email: string, password: string) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        this.authState = user
+      })
+      .catch(error => {
+        console.log(error)
+        throw error
+      });
+  }
+
+  loginWithEmail(email: string, password: string) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        this.authState = user
+      })
+      .catch(error => {
+        console.log(error)
+        throw error
+      });
+  }
+
+  signOut(): void {
+    this.afAuth.auth.signOut();
+    this.router.navigate(['/'])
   }
 }

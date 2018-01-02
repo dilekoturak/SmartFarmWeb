@@ -11,18 +11,14 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AuthService } from './auth.service';
-import { AuthGaurd } from './authgaurd.service';
 import { AppRoutingModule} from "./app.routes";
 import {HttpClientModule} from "@angular/common/http";
+import { InfoComponent } from './info/info.component';
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyDLbC1zGwwORYSeXNpaszglqL-zw4byRcM",
-  authDomain: "smartgreenhouse-f919a.firebaseapp.com",
-  databaseURL: "https://smartgreenhouse-f919a.firebaseio.com",
-  projectId: "smartgreenhouse-f919a",
-  storageBucket: "smartgreenhouse-f919a.appspot.com",
-  messagingSenderId: "563079342427"
-};
+import {environment} from '../environments/environment';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+
+
 
 @NgModule({
   declarations: [
@@ -31,18 +27,20 @@ export const firebaseConfig = {
     FooterComponent,
     LoginComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    InfoComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     HttpModule,
-    HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [AuthService, AuthGaurd],
+  providers: [AuthService],
 
   bootstrap: [AppComponent]
 })

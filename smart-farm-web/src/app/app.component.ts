@@ -26,11 +26,5 @@ export class AppComponent implements OnInit{
     //Initialize firebase app that we can use in Angular 4 Firebase Authentication App
     AngularFireModule.initializeApp(firebaseConfig);
   }
-  onLogout(){
-    this.authService.logout();
-  }
-  //Check use is logged in
-  checkUserLoggedIn(){
-    return localStorage.getItem('isLoggedIn') ? true : false;
-  }
+
 }
