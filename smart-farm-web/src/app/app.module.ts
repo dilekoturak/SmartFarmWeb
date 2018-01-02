@@ -17,7 +17,10 @@ import { InfoComponent } from './info/info.component';
 
 import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-
+import { ClientsComponent } from './clients/clients.component';
+import { ClientsListComponent } from './clients-list/clients-list.component';
+import { HeaderUserComponent } from './header-user/header-user.component';
+import { AngularFireDatabaseModule} from "angularfire2/database";
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
     LoginComponent,
     HomeComponent,
     ContactComponent,
-    InfoComponent
+    InfoComponent,
+    ClientsComponent,
+    ClientsListComponent,
+    HeaderUserComponent
   ],
   imports: [
     AppRoutingModule,

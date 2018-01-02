@@ -1,10 +1,50 @@
-<div *ngIf="authService.currentUser">
-  <h5 class="text-primary">User Information</h5>
-  <h4>
-    <strong>UID:</strong> {{ authService.currentUserId }}
-  </h4>
-  <h4>
-    <strong>Email:</strong> {{ authService.currentUserName }}
-  </h4>
-  <button class="button" (click)="logout()">Logout</button>
+<div class="index-hero">
+  <div class="container">
+    <div *ngIf="authService.currentUser">
+      <h4>
+        <strong>UID:</strong> {{ authService.currentUserId }}
+      </h4>
+      <h4>
+        <strong>Email:</strong> {{ authService.currentUserName }}
+      </h4>
+      <div class="row">
+        <div class="col-md-6">
+          <form #clientForm = "ngForm" (ngSubmit)="onSubmit(clientForm)">
+            <div class = "form-group">
+              <label>Name</label>
+              <input class="form-control" name="name" #name="ngModel" [(ngModel)]="clientsService.selectedClient.name" placeholder="Full Name">
+            </div>
+            <div class = "form-group">
+              <label>Email</label>
+              <input class="form-control" name="email" #name="ngModel" [(ngModel)]="clientsService.selectedClient.email" placeholder="E-mail">
+            </div>
+            <div class = "form-group">
+              <label>Phone</label>
+              <input class="form-control" name="phone" #name="ngModel" [(ngModel)]="clientsService.selectedClient.phone" placeholder="Phone Number">
+            </div>
+            <div class = "form-group">
+              <label>Address</label>
+              <input class="form-control" name="address" #name="ngModel" [(ngModel)]="clientsService.selectedClient.address" placeholder="Address">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-default"><i class="fa fa-floppy-o"></i> Submit</button>
+              <button type="button" class="btn btn-default"><i class="fa fa-trash"></i> Delete</button>
+              <button type="button" class="btn btn-default"><i class="fa fa-repeat"></i>Reset</button>
+
+            </div>
+
+          </form>
+        </div>
+        <div class="col-md-6">
+          <p>
+            clients-list works!
+          </p>
+        </div>
+      </div>
+      <button class="button" (click)="logout()">Logout</button>
+
+    </div>
+  </div>
 </div>
+
+
