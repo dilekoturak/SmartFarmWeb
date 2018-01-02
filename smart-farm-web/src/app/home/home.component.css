@@ -1,0 +1,8 @@
+.index-hero {
+  overflow: hidden;
+  background: #04B4AE;
+  background-size: cover;
+  height: 750px;
+  position: relative;
+  padding-top: 220px;
+}

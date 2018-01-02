@@ -1,0 +1,70 @@
+<app-header></app-header>
+<div class="contact-us-map">
+  <div class="container">
+    <div class="location d-none d-md-block">
+      <h5>React Headquarters</h5>
+      <p>10th Main Street 12/3 4580, 10th Floor, San Francisco, Ca.</p>
+    </div>
+  </div>
+  <div id="map"></div>
+</div>
+
+<div class="contact-us-info">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 message">
+        <h3>Send us a message</h3>
+        <p>
+          You can contact us with anything related to React. <br/> We'll get in touch with you as soon as possible.
+        </p>
+        <form role="form" id="contact-form" method="post">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" name="name" class="form-control" id="name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" name="email" class="form-control" id="email" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" class="form-control" id="phone" />
+          </div>
+          <div class="form-group">
+            <label for="message">Your message</label>
+            <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+          </div>
+          <div class="submit">
+            <input type="submit" class="button button-small" value="Email us" />
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4 contact">
+        <div class="address">
+          <h3>Our Address</h3>
+          <p>
+            The Old Road Willington, <br />
+            7 Kings Road, <br />
+            Southshore, 64890
+          </p>
+        </div>
+        <div class="phone">
+          <h3>By Phone</h3>
+          <p>
+            1-800-346-3344
+          </p>
+        </div>
+        <div class="online-support">
+          <strong>Looking for online support?</strong>
+          <p>
+            Talk to us now with our online chat
+          </p>
+        </div>
+        <div class="social">
+          <a href="#" class="fb"><img src="images/social/fb.png" alt="facebook" /></a>
+          <a href="#" class="tw"><img src="images/social/tw.png" alt="twitter" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

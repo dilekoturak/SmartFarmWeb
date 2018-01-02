@@ -1,46 +1,49 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AngularFireModule } from 'angularfire2';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
+import { AuthService } from './auth.service';
+import { AuthGaurd } from './authgaurd.service';
+import { AppRoutingModule} from "./app.routes";
+import {HttpClientModule} from "@angular/common/http";
 
-import {AuthGuard} from './guards/auth.guard';
-import {AppConfig} from './app.config';
-import { UserService } from './services/user.service';
-import {SignupService} from './services/signup.service';
-import { HomeComponent } from './components/home/home.component';
-import {AppRoutingModule} from './app.routing';
-import { SignupApproveComponent } from './components/signup-approve/signup-approve.component';
+export const firebaseConfig = {
+  apiKey: "AIzaSyDLbC1zGwwORYSeXNpaszglqL-zw4byRcM",
+  authDomain: "smartgreenhouse-f919a.firebaseapp.com",
+  databaseURL: "https://smartgreenhouse-f919a.firebaseio.com",
+  projectId: "smartgreenhouse-f919a",
+  storageBucket: "smartgreenhouse-f919a.appspot.com",
+  messagingSenderId: "563079342427"
+};
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginFormComponent,
-    DashboardComponent,
-    SignupComponent,
+    LoginComponent,
     HomeComponent,
-    SignupApproveComponent
+    ContactComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     HttpModule,
+    HttpClientModule,
     FormsModule
   ],
-  providers: [
-    UserService,
-    SignupService,
-    AuthGuard,
-    AppConfig
-  ],
+  providers: [AuthService, AuthGaurd],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
