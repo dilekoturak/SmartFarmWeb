@@ -23,4 +23,18 @@ export class ClientsService {
     })
 
   }
+
+  updateClient(cli : ClientsModel){
+    this.clientsList.update(cli.$key, {
+      name : cli.name,
+      email : cli.email,
+      phone : cli.phone,
+      address : cli.address
+    })
+  }
+
+  deleteClient(key : string){
+
+    this.clientsList.remove(key);
+  }
 }

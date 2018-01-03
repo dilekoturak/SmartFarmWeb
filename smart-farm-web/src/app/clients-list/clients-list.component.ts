@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ClientsService} from "../clients/shared/clients.service";
 import { AngularFireList} from "angularfire2/database";
 import {ClientsModel} from "../clients/shared/clients.model";
+import {element} from "protractor";
 
 @Component({
   selector: 'app-clients-list',
@@ -11,12 +12,26 @@ import {ClientsModel} from "../clients/shared/clients.model";
 })
 export class ClientsListComponent implements OnInit {
 
-  clientList : AngularFireList<ClientsModel>;
+  clientList : ClientsModel[];
 
   constructor(private clientsService : ClientsService) { }
 
   ngOnInit() {
-    this.clientsService.getData();
+    var x = this.clientsService.getData();
+    x.snapshotChanges().subscribe(item => {
+
+      this.clientList = [];
+      item.forEach(element => {
+
+        var y = element.payload.toJSON();
+        y["$key"] = element.key;
+        this.clientList.push( y as ClientsModel)
+      })
+    })
+  }
+
+  onItemClick(cli : ClientsModel){
+    this.clientsService.selectedClient = Object.assign({}, cli);
   }
 
 }
